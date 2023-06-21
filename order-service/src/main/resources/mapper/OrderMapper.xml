@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hmall.order.mapper.OrderMapper">
+
+    <insert id="insertOrder">
+        insert into tb_order(id, total_fee, payment_type, user_id, status, create_time, update_time)
+        values (#{order.id}, #{order.totalFee}, #{order.paymentType}, #{order.userId}, #{order.status},
+                #{order.createTime}, #{order.updateTime})
+    </insert>
+    <insert id="insertOrderDetail">
+        insert into tb_order_detail(id, order_id, item_id, num, name, spec, price, image, create_time, update_time)
+        values (#{id}, #{orderId}, #{itemId}, #{num}, #{name}, #{spec}, #{price}, #{image}, #{createTime},
+                #{updateTime})
+    </insert>
+    <insert id="insertOrderLogistics">
+        insert into tb_order_logistics(order_id, contact, mobile, province, city, town, street, create_time,
+                                       update_time)
+        values (#{orderId}, #{contact}, #{mobile}, #{province}, #{city}, #{town}, #{street}, #{createTime},
+                #{updateTime})
+    </insert>
+</mapper>

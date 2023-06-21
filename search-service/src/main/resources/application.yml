@@ -1,0 +1,19 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: searchservice
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  rabbitmq:
+    host: 192.168.231.129 #主机名
+    port: 5672 #端口
+    virtual-host: / #虚拟主机
+    username: itcast #用户名
+    password: 123321 #密码
+logging:
+  level:
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hmall.item.mapper.ItemMapper">
+    <insert id="insert">
+        insert into tb_item(id, name, price, stock, image, category, brand, spec, sold, comment_count, isAD, status,
+                            create_time, update_time)
+        values (#{id}, #{name}, #{price}, #{stock}, #{image}, #{category}, #{brand}, #{spec}, #{sold}, #{commentCount},
+                #{isAD}, #{status}, #{createTime}, #{updateTime});
+    </insert>
+    <update id="update">
+        update tb_item
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="stock != null">stock = #{stock},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="category != null and category != ''">category = #{category},</if>
+            <if test="brand != null and brand != ''">brand = #{brand},</if>
+            <if test="spec != null and spec != ''">spec = #{spec},</if>
+            <if test="sold != null">sold = #{sold},</if>
+            <if test="commentCount != null">comment_count = #{commentCount},</if>
+            <if test="isAD != null">isAD = #{isAD},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from tb_item where id = #{id}
+    </delete>
+
+    <select id="page" resultType="com.hmall.item.pojo.Item">
+        select *
+        from tb_item
+        order by update_time desc
+    </select>
+    <select id="seleteOne" resultType="com.hmall.item.pojo.Item">
+        select *
+        from tb_item
+        where id = #{id}
+    </select>
+</mapper>
